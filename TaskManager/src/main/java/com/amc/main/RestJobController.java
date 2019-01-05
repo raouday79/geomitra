@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.amc.main.dao.JobDao;
 import com.amc.main.entity.JobEntity;
+import com.amc.main.utility.RestExceptionHandler;
 
 
 @RestController
@@ -99,7 +100,15 @@ public class RestJobController {
 	public ResponseEntity<JobEntity> getJobById(@PathVariable(name="id") int id)
 	{
 		
-		JobEntity jobEntity =	jobDao.findById(id).get();
+		
+		System.out.println();
+		
+		JobEntity jobEntity =	jobDao.findById(id).orElse(null);
+		if(jobEntity==null)
+		{
+			System.out.println("-----------------------------------------------------------");
+		//	throw new RestExceptionHandler();
+		}
 		return new ResponseEntity<>(jobEntity,HttpStatus.OK);
 		
 	}

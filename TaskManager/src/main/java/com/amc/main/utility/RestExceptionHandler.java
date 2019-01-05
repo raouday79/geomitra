@@ -24,13 +24,15 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
 	   }
 
 	   private ResponseEntity<Object> buildResponseEntity(ApiError apiError) {
-	       return new ResponseEntity<>(apiError, apiError.getStatus());
+	       return new ResponseEntity<>(apiError, apiError.getHttpStatus());
 	   }
 	   
 	   @ExceptionHandler(EntityNotFoundException.class)
 	   protected ResponseEntity<Object> handleEntityNotFound(
 	           EntityNotFoundException ex) {
-	       ApiError apiError = new ApiError(HttpStatus.NOT_FOUND,LocalDateTime.now(),ex.getMessage(),ex.getLocalizedMessage());
+		   
+		   String msg = "Not found";
+	       ApiError apiError = new ApiError(HttpStatus.NOT_FOUND,LocalDateTime.now(),msg,ex.getLocalizedMessage());
 	       apiError.setMessage(ex.getMessage());
 	       return buildResponseEntity(apiError);
 	   }

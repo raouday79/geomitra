@@ -19,10 +19,10 @@ public class EmployeeEntity {
 	@Column(name="emp_name")
 	String empName;
 	
-	@Column(name="emp_contact")
+	@Column(name="contact")
 	String contact;
 	
-	@Column(name="no_of_job_assigned")
+	@Column(name="no_of_job_assign")
 	String noOfJobAssigned;
 
 	public int getEmpId() {
