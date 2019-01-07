@@ -30,11 +30,32 @@ public class JobAssignEntity {
 	EmployeeEntity  employeeEntity; 
 	
 	@Column(name="emp_id",insertable=false,updatable=false)
-	int emp_id;
+	int empId;
 	
 	@Column(name="job_id",insertable=false,updatable=false)
-	int job_id;
+	int jobId;
 	
+	
+	@Column(name="job_start")
+	String jobStart;
+	@Column(name="job_end")
+	String jobEnd;
+	@Column(name="total_hr_spend")
+	String totalHrSpend;
+	
+	
+	public int getEmpId() {
+		return empId;
+	}
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+	public int getJobId() {
+		return jobId;
+	}
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
+	}
 	public JobEntity getJobEntity() {
 		return jobEntity;
 	}
@@ -47,24 +68,7 @@ public class JobAssignEntity {
 	public void setEmployeeEntity(EmployeeEntity employeeEntity) {
 		this.employeeEntity = employeeEntity;
 	}
-	public int getEmp_id() {
-		return emp_id;
-	}
-	public void setEmp_id(int emp_id) {
-		this.emp_id = emp_id;
-	}
-	public int getJob_id() {
-		return job_id;
-	}
-	public void setJob_id(int job_id) {
-		this.job_id = job_id;
-	}
-	@Column(name="job_start")
-	String jobStart;
-	@Column(name="job_end")
-	String jobEnd;
-	@Column(name="total_hr_spend")
-	String totalHrSpend;
+
 	public int getJobAssignId() {
 		return jobAssignId;
 	}

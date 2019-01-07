@@ -3,6 +3,8 @@ package com.amc.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,102 +20,97 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amc.main.dao.JobDao;
+import com.amc.main.dto.JobDto;
 import com.amc.main.entity.JobEntity;
-import com.amc.main.utility.RestExceptionHandler;
+import com.amc.main.service.JobService;
+import com.amc.main.utility.NotFoundException;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping(value="/api")
 public class RestJobController {
 
-	@Autowired
-	JobDao jobDao;
 	
-	@CrossOrigin
+	
+	@Autowired
+	JobService jobService;
+	
+	
 	@GetMapping(value="pg-jobs")
 	public Page<JobEntity> getAllJobpg(@RequestParam(name="pg",defaultValue="0") int pg)
 	{
-		System.out.println(pg);
+		
+	Page<JobEntity> pages = jobService.getJobByPage(pg);
+	System.out.println(pg);
+	/*
 	Page<JobEntity> pages	=	jobDao.findAll(PageRequest.of(pg,10,Sort.by("jobid").ascending()));
-	System.out.println(pages);
+	System.out.println(pages);*/
 	
 	return pages;
 		
 	}
 	
 	
+	///// This will return list of jobs
 	
-	@CrossOrigin
-	@GetMapping(value="all-jobs")
-	public List<JobEntity> getAllJob()
-	{
-	List<JobEntity> list	=	jobDao.findAll(PageRequest.of(0, 15)).getContent();
-	
-	return list;
-		
-	}
-	
-	///// This request page in pagination
-	@CrossOrigin
 	@GetMapping("jobs/{pg}")
-	public List<JobEntity> getPageJob(@PathVariable(name="pg") int pg)
+	public List<JobDto> getPageJob(@PathVariable(name="pg") int pg)
 	{
-		final int MAX_SIZE = 15;
 		
-		List<JobEntity> list = new  ArrayList<>();
-		
-		list =	jobDao.findAll(PageRequest.of(pg, MAX_SIZE)).getContent();
+		List<JobDto> list = jobService.getJobList(pg);
 		
 		return list;
 		
+		/*final int MAX_SIZE = 15;
+		List<JobEntity> list = new  ArrayList<>();
+		list =	jobDao.findAll(PageRequest.of(pg, MAX_SIZE)).getContent();
+		return list;
+		*/
 	}
 	
 	// This method will post a new Job..
-	@CrossOrigin
+	
 	@PostMapping(value="jobsave",consumes=MediaType.APPLICATION_JSON_VALUE)
-	public JobEntity saveAll(@RequestBody JobEntity jobEntity)
+	public JobDto saveAll(@RequestBody JobDto dto)
 	{
-		System.out.println(jobEntity);
-		jobDao.save(jobEntity);
+		jobService.registerJob(dto);
 		
-		return jobEntity;
+		return dto;
 	}
 	
 	
 	// This request will update the job...
-	@CrossOrigin
+	
 	@PutMapping(value="update-job")
-	public JobEntity updateJob(@RequestBody JobEntity entity)
+	public JobDto updateJob(@RequestBody JobDto dto)
 	{
-		jobDao.save(entity);
+		jobService.updateJob(dto);
 		
-		return entity;
+		return dto;
 		
 	}
 	
-	@CrossOrigin
+	
 	@GetMapping(value="job/{id}")
-	public ResponseEntity<JobEntity> getJobById(@PathVariable(name="id") int id)
+	public ResponseEntity<JobDto> getJobById(@PathVariable(name="id") int id) throws NotFoundException,Exception
 	{
 		
 		
 		System.out.println();
 		
-		JobEntity jobEntity =	jobDao.findById(id).orElse(null);
-		if(jobEntity==null)
+		JobDto job =	jobService.findJobById(id);
+		if(job==null)
 		{
-			System.out.println("-----------------------------------------------------------");
-		//	throw new RestExceptionHandler();
+			throw new NotFoundException("Job With jobid {"+id+"} not found");
 		}
-		return new ResponseEntity<>(jobEntity,HttpStatus.OK);
+		
+		return new ResponseEntity<>(job,HttpStatus.OK);
 		
 	}
 	
-	///------------------------------------------------------------------------------------------------------------------
 	
 	
 	

@@ -14,43 +14,36 @@ public class JobEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="job_id")
-	int jobid;
+	int jobId;
 	
 	@Column(name="job_name")
-	String jobname;
+	String jobName;
 	@Column(name="job_description ")
-	String jobdescription;
-	@Column(name="job_status")
-	String jobstatus;
+	String jobDescription;
+	
+	public int getJobId() {
+		return jobId;
+	}
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
+	}
+	public String getJobName() {
+		return jobName;
+	}
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
+	public String getJobDescription() {
+		return jobDescription;
+	}
+	public void setJobDescription(String jobDescription) {
+		this.jobDescription = jobDescription;
+	}
 	
 	
 	
 	
 	
-	public int getJobid() {
-		return jobid;
-	}
-	public void setJobid(int jobid) {
-		this.jobid = jobid;
-	}
-	public String getJobdescription() {
-		return jobdescription;
-	}
-	public void setJobdescription(String jobdescription) {
-		this.jobdescription = jobdescription;
-	}
-	public String getJobstatus() {
-		return jobstatus;
-	}
-	public void setJobstatus(String jobstatus) {
-		this.jobstatus = jobstatus;
-	}
-	public String getJobname() {
-		return jobname;
-	}
-	public void setJobname(String jobname) {
-		this.jobname = jobname;
-	}
 	
 	
 	

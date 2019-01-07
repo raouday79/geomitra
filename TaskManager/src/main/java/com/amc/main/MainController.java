@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.amc.main.dao.JobDao;
 import com.amc.main.entity.JobEntity;
+import com.amc.main.repository.JobRepository;
 
-@Controller
+//@Controller
 
 public class MainController {
 	
-	@Autowired(required=true)
+	//@Autowired(required=true)
 	@Qualifier("jobDao")
-	JobDao jobDao;
+	JobRepository jobDao;
 	
 
 	
@@ -127,8 +127,8 @@ public class MainController {
 		
 		
 		
-		System.out.println(entity.getJobname());
-		System.out.println(entity.getJobdescription());
+		System.out.println(entity.getJobName());
+		System.out.println(entity.getJobDescription());
 		JobEntity entity2 = jobDao.save(entity);
 		
 		ModelAndView andView = new ModelAndView("JobEntry");

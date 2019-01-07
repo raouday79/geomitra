@@ -45,6 +45,38 @@ public class WorkingEntity {
 		this.workId = workId;
 	}
 
+	public JobAssignEntity getAssignEntity() {
+		return assignEntity;
+	}
+
+	public void setAssignEntity(JobAssignEntity assignEntity) {
+		this.assignEntity = assignEntity;
+	}
+
+	public int getAssignId() {
+		return assignId;
+	}
+
+	public void setAssignId(int assignId) {
+		this.assignId = assignId;
+	}
+
+	public String getHourSpent() {
+		return hourSpent;
+	}
+
+	public void setHourSpent(String hourSpent) {
+		this.hourSpent = hourSpent;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	
 	
 

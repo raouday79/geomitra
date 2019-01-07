@@ -12,13 +12,13 @@ public class ApiError {
 	private LocalDateTime localDateTime;
 	
 	private String message;
-	private String debugMessage;
-	public ApiError(HttpStatus httpStatus, LocalDateTime localDateTime, String message, String debugMessage) {
+
+	public ApiError(HttpStatus httpStatus, LocalDateTime localDateTime, String message) {
 		super();
 		this.httpStatus = httpStatus;
 		this.localDateTime = localDateTime;
 		this.message = message;
-		this.debugMessage = debugMessage;
+		
 	}
 	public HttpStatus getHttpStatus() {
 		return httpStatus;
@@ -38,12 +38,7 @@ public class ApiError {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public String getDebugMessage() {
-		return debugMessage;
-	}
-	public void setDebugMessage(String debugMessage) {
-		this.debugMessage = debugMessage;
-	}
+
 	
 
 }

@@ -1,9 +1,6 @@
-package com.amc.main.dto;
+package com.amc.main.conversion;
 
-public class JobDto {
-	
-	
-	
+public class JobTo {
 	
 	int jobId;
 	String jobName;
@@ -27,6 +24,4 @@ public class JobDto {
 		this.jobDescription = jobDescription;
 	}
 
-	
-	
 }
