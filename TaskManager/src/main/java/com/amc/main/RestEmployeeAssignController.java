@@ -121,8 +121,8 @@ public class RestEmployeeAssignController {
 	
 
 	// Get job list of employeee.................................................................
-	@GetMapping(value="get-assign-job/{emp_id}")
-	public List<EmployeeAssignedJobDto> GetAssignJob(@PathVariable(name="emp_id") int emp_id)
+	@GetMapping(value="get-assign-job/{emp_id}") 
+	public List<EmployeeAssignedJobDto> GetAssignJob(@PathVariable(name="emp_id") int emp_id) throws Exception
 	{
 		
 		List<EmployeeAssignedJobDto> ls = jobAssignService.getAssignedById(emp_id);
@@ -133,8 +133,8 @@ public class RestEmployeeAssignController {
 	
 	
 	
-	@GetMapping(value="work-details/{assign_id}")
-	public List<WorkingEntity> workingentity(@PathVariable(name="assign_id")int assign_id)
+	@GetMapping(value="work-details/{assign_id}") 
+	public List<WorkingEntity> workingentity(@PathVariable(name="assign_id")int assign_id) throws Exception
    {
 		List<WorkingEntity> ws = workingJobService.getWorkingByAssignId(assign_id);
 		
