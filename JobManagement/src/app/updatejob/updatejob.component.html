@@ -1,0 +1,17 @@
+<h2 style="text-align: center;border: 5px,5px;">{{title}}</h2>
+<h4 style="text-align: center;color: red" *ngIf="status">{{message}}</h4>
+<form #f="ngForm"  (ngSubmit)="updateJob()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Job Name</label>
+    <input type="text"name="jobname" [(ngModel)]="jobModel.jobName" required="required" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    
+</div>
+    
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" name="jobdescription" required="required" [(ngModel)]="jobModel.jobDescription" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+
+
+  <button type="Update" class="btn btn-primary">Submit</button>
+</form>

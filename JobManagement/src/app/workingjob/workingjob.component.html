@@ -1,0 +1,16 @@
+<h4 style="text-align: center;color: red" *ngIf="status">{{message}}</h4>
+<form  #f="ngForm"  (ngSubmit)="adddWorking()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">No. Of Hours Work</label>
+    <input type="text" class="form-control"  name="hours" [(ngModel)]="jobrecord.hourSpent" required="required" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Job Hour(number)">
+  </div>
+    
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Date</label>
+    <input class="form-control" name="date" [(ngModel)]="jobrecord.date" required="required" type="date">
+    
+  </div>
+
+
+  <button  type="submit" class="btn btn-primary">Submit</button>
+</form>
