@@ -1,0 +1,25 @@
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Job Management</h1>
+  <p></p> 
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" [routerLink]="['']" routerLinkActive="router-link-active">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/addjob']" routerLinkActive="router-link-active" >ADD JOB</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/joblist']" routerLinkActive="router-link-active" >JOB LIST</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/employee-list']" routerLinkActive="router-link-active" >EMPLOYEE LIST</a>
+      </li>   
+    </ul>
+  </div>  
+</nav>
+<router-outlet></router-outlet>

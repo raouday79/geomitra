@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>{{title}} : {{name}}</h2>
+  <h2></h2>
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Job Id</th>
+        <th>Job Name</th>
+        <th>Job Description</th>
+         <th>Start date</th>
+         <th>End date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of joblist">
+        <td>{{job.jobId}}</td>
+        <td>{{job.jobName}}</td>
+        <td>{{job.jobDescription}}</td>
+        <td><input [(ngModel)]="start" name="start_date" type="date"></td>
+        <td><input  [(ngModel)]="end" name="date_date" type="date"></td>
+        
+        <td><button type="button" (click)="assignJob(job)" class="btn btn-primary active">Assign</button></td>
+       
+      </tr>
+      
+    </tbody>
+  
+  </table>
+ 
+</div>
+ 

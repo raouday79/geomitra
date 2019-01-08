@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>{{title}}:{{emp.empName}}</h2>
+  <h2></h2>
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Assign Id</th>
+        <th>Job Name</th>
+        <th>Job Description</th>
+         <th>Start date</th>
+         <th>End date</th>
+          <th>Total Work(hr)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let empjob of employeejobmodel">
+        <td>{{empjob.assignDto.jobAssignId}}</td>
+        <td>{{empjob.jobDto.jobName}}</td>
+        <td>{{empjob.jobDto.jobDescription}}</td>
+        <td>{{empjob.assignDto.start}}</td>
+        <td>{{empjob.assignDto.end}}</td>
+        <td>{{empjob.assignDto.totalHours}}</td>
+       
+        
+        <td><button type="button" (click)="workingDetail(empjob)" class="btn btn-primary active">Enter Work</button></td>
+       
+      </tr>
+      
+    </tbody>
+  
+  </table>
+ 
+</div>
+ 
